@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/monsuratolaosebikan/safe-park#readme",
   "dependencies": {
+    "axios": "^0.17.0",
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mapbox": "^1.0.0-beta9"
   }
 }
