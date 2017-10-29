@@ -22,27 +22,6 @@ app.get('/parking', function(req, res) {
     var street = info.street;
     console.log(lat);
     getParkingData(lat, long, dist, res);
-    // axios.get('https://apis.solarialabs.com/shine/v1/parking-rules/meters',        { 
-    //         params: {
-    //             "lat": lat,
-    //             "long": long,
-    //             "max-distance": dist,
-    //             "max-results": 5,
-    //             "apikey": "xGKeKshQA8IBJsXiOgm0mdGjvWao2VjD"
-    //         }
-    //     })
-    
-    // .then(function(response) {
-    //     //console.log(data);
-    //     //console.log(response.data);
-    //     res.json(response.data);
-    //         //JSON.stringify(data));
-        
-    
-//     })
-// .catch (function(error){
-//         console.log(error);
-//         });
 
 });
 
@@ -58,10 +37,7 @@ function getParkingData(lat, long, dist, res) {
         })
     
     .then(function(response) {
-        //console.log(data);
-        //console.log(response.data);
         res.json(response.data);
-            //JSON.stringify(data));
         
     
     })
