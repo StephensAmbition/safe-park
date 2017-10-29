@@ -1,0 +1,32 @@
+<html>
+<head>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.css' type='text/css' />
+  <link href='style.css' rel="stylesheet" />
+</head>
+<body>
+
+  <div id='map' class='map'></div>
+  <div class='sidebar pad2'>
+    <div class='heading'>
+        <h1>Optimal Parking Meter Locations</h1>
+      </div>
+      <div>
+        <br />
+        <label for="distance">Max Parking Distance</label>
+        <div class="input-group">
+          <input type="text" id="distance" value=1000 class="form-control" placeholder="Max Parking Distance" aria-label="Max Parking Distance" aria-describedby="distance">
+          <span class="input-group-addon" >mi</span>
+        </div>
+      </div>
+      <div class='heading'>
+        </div>
+      <div id='meterList' class='listings'></div>
+  </div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.1/mapbox-gl-geocoder.min.js'></script>
+<script src="app.js"></script>
+</body>
+</html>

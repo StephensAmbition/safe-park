@@ -5,9 +5,11 @@ var bodyParser = require("body-parser");
 var MapboxClient = require('mapbox');
 var client = new MapboxClient('pk.eyJ1IjoibWVkZm9yZGhpc3RvcmljYWwiLCJhIjoiY2o4ZXNiNHN2MTZycjMzb2ttcWp0dDJ1aiJ9.zt52s3jkwqtDc1I2Fv5cJg');
 var crimeData = require('./crimedata.json');
+var path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('app'));
 
 var port = 3000;
 
@@ -40,7 +42,7 @@ var fakeMeters = [
 ];
 
 app.get('/', function(req, res) {
-    res.send("hello");
+    res.sendFile(path.join(__dirname + '/app/index.html'));
 });
 
 app.get('/parking', function(req, res) {
@@ -54,7 +56,7 @@ app.get('/parking', function(req, res) {
 });
 
 function getParkingData(lat, long, dist, res) {
-   axios.get('https://apis.solarialabs.com/shine/v1/parking-rules/meters', { 
+   axios.get('https://apis.solarialabs.com/shine/v1/parking-rules/meters', {
             params: {
                 "lat": lat,
                 "long": long,
@@ -79,8 +81,8 @@ function getParkingData(lat, long, dist, res) {
 }
 
 function getGeoNames(parkingData, res, meters) {
-	
-	
+
+
 		var obj = {};
 		var lat = parkingData.Latitude;
 		var long = parkingData.Longitude;
@@ -99,15 +101,15 @@ function getGeoNames(parkingData, res, meters) {
 					street: street
 				};
 				meters.push(meter);
-				
+
 				// if(i == parkingData.length - 1){
 				// 	rankCrimes(meters);
 				// }
-				
+
 
 			}
 		)
-	
+
 }
 
 
@@ -125,7 +127,6 @@ function rankMeters(meters, res) {
 	});
 	res.json(meters);
 
-}   
+}
 
 app.listen(3000);
-
